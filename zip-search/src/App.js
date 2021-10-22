@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-
 function City(props) {
   return (
     <div>
@@ -17,18 +16,18 @@ function City(props) {
 }
 
 function ZipSearchField(props) {
-  return (<div>
+  return (
+  <div>
     <input onChange={(e) => props.handleChange(e)} />
-    </div>);
+  </div>);
 }
-
 
 class App extends Component {
   state = {
-    zipCode: '',
-    cities: [],
+    city: '',
+    zipCodes: [],
   }
-
+  //
   zipChange = (event) =>  {
     console.log(event.target.value);
 
@@ -45,16 +44,15 @@ class App extends Component {
           })
           .catch(err =>{
             console.log("No Results");
+            console.log(err);
             this.setState({
               cities: []
               });
           })
           // save the data to my state,
-          // and in the render function display the <City /> components
-          
+          // and in the render function display the <City /> components  
     } // end if
   }
-
 
   render() {
     return (
@@ -62,13 +60,13 @@ class App extends Component {
         <div className="App-header">
           <h2>Zip Code Search</h2>
         </div>
-        <ZipSearchField handleChange= {(e) => this.zipChange(e)}/>
-        <div>
-          Zip code is: {this.state.zipCode}
-        </div>
+            <br />
+            <ZipSearchField handleChange= {(e) => this.zipChange(e)}/>
+            <br />
+            Zip code is: {this.state.zipCode}
         <div>
           {
-            this.state.cities.map((city) => <City
+            this.state.zipCodes.map((city) => <City
             data={city} cityName={city.City}
             State={city.State}
             EstimatedPopulation={city.EstimatedPopulation}

@@ -4,17 +4,7 @@
   color: white;
   text-align: center;
 }
-
 #container  {
-  width: 100%;
-}
-#left {
-  float: left;
-  padding-left: 5%;
-  text-align: center;
-}
-#right  {
-  padding-right: 5%;
-  float: right;
+  justify-content: center;
   text-align: center;
 }
